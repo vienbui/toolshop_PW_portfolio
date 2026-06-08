@@ -14,7 +14,7 @@ test.describe('Login feature', () => {
         await expect(page).toHaveURL('/auth/login')
     })
     
-    test('Login success', async ({page}) => {
+    test('TC01- Login success', async ({page}) => {
         
 
         await loginPage.login('customer@practicesoftwaretesting.com', 'welcome01')
@@ -23,5 +23,14 @@ test.describe('Login feature', () => {
         await expect(homePage.getUserNameMenu()).toBeVisible()
         await expect(homePage.getUserNameMenu()).toContainText('Jane Doe')
         
+    })
+
+     test('TC02- Login with wrong password', async ({page}) => {
+        
+
+        await loginPage.login('customer@practicesoftwaretesting.com', 'welcome0112')
+
+        await expect(loginPage.getErrorMsg()).toBeVisible()
+        await expect(loginPage.getErrorMsg()).toContainText("Invalid email or password")        
     })
 })

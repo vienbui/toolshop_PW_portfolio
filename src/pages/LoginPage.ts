@@ -6,6 +6,7 @@ export class LoginPage {
     private password:Locator
     private loginBtn:Locator
     private signInLink:Locator
+    private errorMessage:Locator
 
 
     constructor(page:Page) {
@@ -14,6 +15,7 @@ export class LoginPage {
         this.email = page.locator(`#email`)
         this.password = page.locator('#password')
         this.loginBtn = page.locator('.btnSubmit')
+        this.errorMessage =page.locator('[data-test="login-error"]')
     }
 
     async navigateToLoginPage(){
@@ -39,6 +41,9 @@ export class LoginPage {
         await this.clickLoginBtn()
     }
 
+    getErrorMsg(){
+        return this.errorMessage
+    }
 
 
 }
