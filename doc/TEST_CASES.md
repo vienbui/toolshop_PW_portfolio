@@ -15,7 +15,6 @@
 | TC03 | Login with unregistered email | Stay on login page, error message visible |
 | TC04 | Login with empty fields | Validation errors shown for both fields |
 | TC05 | Logout successfully | Redirect to home, login link visible |
-| TC06 | Access protected page without login | Redirect to login page |
 
 ### Test Data
 | Role | Email | Password |

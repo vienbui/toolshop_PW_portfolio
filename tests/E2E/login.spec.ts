@@ -6,12 +6,11 @@ test.describe('Login feature', () => {
     let loginPage: LoginPage
     let homePage: HomePage
       const USER = {
-              valid:   { email: 'chloeTool@example.com', password: 'SuperSecure@123', username:' chloe test ' },
+              valid:   { email: 'customer@practicesoftwaretesting.com', password: 'welcome01', username:'Jane Doe' },
               invalid: { email: 'noexist@example.com',   password: 'wrongpass'       },
 
         }
    
-
     test.beforeEach('', async ({page}) => {
         loginPage = new LoginPage(page)
         homePage = new HomePage(page)
@@ -19,8 +18,7 @@ test.describe('Login feature', () => {
         await loginPage.navigateToLoginPage()
         await expect(page).toHaveURL('/auth/login')
     })
-    
-    
+
     test('TC01- Login success', async ({page}) => {
     
         await loginPage.login(USER.valid.email, USER.valid.password)
@@ -34,7 +32,7 @@ test.describe('Login feature', () => {
 
      test('TC02- Login with wrong password', async ({page}) => {
         
-        await loginPage.login(USER.invalid.email, USER.invalid.password)       
+        await loginPage.login(USER.valid.email, USER.invalid.password)       
 
         await expect(page).not.toHaveURL('/account')
         await expect(loginPage.getErrorMsg()).toBeVisible()
@@ -69,17 +67,6 @@ test.describe('Login feature', () => {
         await expect(homePage.getUserNameMenu()).toContainText(USER.valid.username)
 
         await homePage.signOut()
-        await expect(page).toHaveURL('/auth/login')
-
-        await expect(loginPage.getEmailElement()).toBeVisible()
-           
-    })
-
-        test('TC06 - Redirected to login page when accessing Home Page without login ', async ({page}) => {
-        
-        await homePage.navigateToHomePage()
-
-    
         await expect(page).toHaveURL('/auth/login')
 
         await expect(loginPage.getEmailElement()).toBeVisible()

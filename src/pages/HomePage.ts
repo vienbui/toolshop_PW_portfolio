@@ -15,7 +15,7 @@ export class HomePage {
     }
 
     async navigateToHomePage(){
-        await this.page.goto('/account')
+        await this.page.goto('/')
     }
 
    getHomePageLogo(){
