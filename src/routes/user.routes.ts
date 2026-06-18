@@ -1,3 +1,5 @@
 export const  UserRoutes = {
-    registerUser: 'users/register'
+    registerUser: 'users/register',
+    loginUser: 'users/login',
+    deleteUser:'users'
 }
